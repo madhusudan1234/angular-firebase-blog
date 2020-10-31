@@ -1,0 +1,51 @@
+<!-- TOOLBAR -->
+<mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+    <span>AKLIO TECH</span>
+    <span class="example-spacer"></span>
+    <form class="example-form">
+        <mat-form-field class="example-full-width">
+            <input type="text" placeholder="Search blog" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                    {{option}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </form>
+</mat-toolbar>
+
+
+<div class="main_div">
+    <!-- STATIC CARD -->
+    <mat-card class="example-card" *ngFor="let blog of blogs">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{blog.title}}</mat-card-title>
+            <mat-card-subtitle>
+                <mat-chip-list aria-label="Fish selection">
+                    <mat-chip *ngFor="let tag of blog.tags">{{tag}}</mat-chip>
+                </mat-chip-list>
+            </mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src={{blog.titleimage}} alt="Photo of a Shiba Inu">
+        <mat-card-content>
+            <p>
+                {{blog.shortcontent}}
+                <a href={{blog.fullcontentURL}}>...read more</a>
+            </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button matBadge={{blog.likecount}} (click)="addLikeToDB(blog.key, blog.likecount)">LIKE</button>
+            <button mat-button>SHARE</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+
+<!-- Footer -->
+<footer>
+</footer>
+
+<router-outlet></router-outlet>

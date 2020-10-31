@@ -1,0 +1,1 @@
+integrate firebase dymanically load blogs from firebase blog on click should go to the blog page blog_root - Title - TitleImageLink - ShortContent - LikeCount - Tags
