@@ -11,7 +11,7 @@ import { DatabaseService } from 'src/app/database.service'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  blogs: Observable<Blog[]>;
+  blogs: any;
   title = 'angular-blog';
   myControl = new FormControl();
   tags: string[] = [];
