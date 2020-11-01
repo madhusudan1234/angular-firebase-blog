@@ -59,7 +59,7 @@ export class AppComponent implements OnInit {
     this.db.getBlogs().snapshotChanges().pipe(
       map(changes =>
         changes.map(c =>
-          ({ key: c.payload.key, ...c.payload.val() })
+          ({ key: c.key, ...c.payload.val() })
         )
       )
     ).subscribe(data => {
